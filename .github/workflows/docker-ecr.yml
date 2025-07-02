@@ -26,7 +26,7 @@ jobs:
 
     - name: Build, Tag, and Push
       run: |
-        REPO_NAME=hello-docker
+        REPO_NAME=rohit/git
         IMAGE_TAG=new
         ACCOUNT_ID=$(aws sts get-caller-identity --query Account --output text)
         ECR_URI=$ACCOUNT_ID.dkr.ecr.us-east-1.amazonaws.com/$REPO_NAME
