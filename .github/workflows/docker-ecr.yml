@@ -27,8 +27,8 @@ jobs:
     - name: Build, Tag, and Push
       run: |
         REPO_NAME=hello-docker
-        IMAGE_TAG=latest
+        IMAGE_TAG=new
         ACCOUNT_ID=$(aws sts get-caller-identity --query Account --output text)
-        REPO_URI=$ACCOUNT_ID.dkr.ecr.us-east-1.amazonaws.com/$IMAGE_NAME
-        docker build -t $REPO_URI:latest .
-        docker push $REPO_URI:latest
+        ECR_URI=$ACCOUNT_ID.dkr.ecr.us-east-1.amazonaws.com/$REPO_NAME
+        docker build -t $ECR_URI:$IMAGE_TAG .
+        docker push $ECR_URI:$IMAGE_TAG
